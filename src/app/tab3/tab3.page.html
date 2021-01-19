@@ -1,0 +1,38 @@
+
+<ion-content [fullscreen]="true" >
+  
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col >
+        <h3> Favoritos</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  
+  <ion-slides style="top: 50%;"                
+  [options]="slideOpts"
+  *ngIf="peliculas.length === 0">
+    <ion-slide >
+        <ion-label>No se encuentran favoritos</ion-label>
+    </ion-slide>
+  </ion-slides>
+
+  <div *ngFor="let pelisCategoria of favoritoGenero">
+
+
+    <ion-grid *ngIf="pelisCategoria.pelis.length > 0">
+      <ion-row>
+        <ion-col>
+          <h4>{{ pelisCategoria.genero}}</h4>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+
+  <app-slideshow-poster [peliculas]="pelisCategoria.pelis"></app-slideshow-poster>
+
+  </div>
+
+</ion-content>
